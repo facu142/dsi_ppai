@@ -27,11 +27,12 @@ class Controlador:
     def tomarLLamadas(self, llamada):
         nombre_cliente = llamada.getNombreClienteDeLlamada()
         estado = llamada.determinarUltimoEstado()
-        duracion = llamada.duracion
+        duracion = llamada.calcularDuracion()
         datos_respuestas_clientes = llamada.getRespuestas() # esta va a ser una lista
-        for respuesta in datos_respuestas_clientes:
-            respuesta = respuesta.respuestaSeleccionada
-            pregunta = respuesta.pregunta
+        for respuestaDeCliente in datos_respuestas_clientes:
+            respuesta = respuestaDeCliente.respuestaSeleccionada # mmmmm no se no se
+            descripcion_pregunta = RespuestaPosible.getDescripcionRta() # mmmmm no se no se
+            # faltan las 2 descripciones
         
     
     def tomarOpcGenerarCSV(self):

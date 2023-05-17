@@ -53,34 +53,6 @@ respuestaDeCliente10 = RespuestaDeCliente("pregunta 5", respuestaPosible10 = Res
 
 
 
-#Cami
-
-
-
-
-
-
-
-
-
-
-
-#delfi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
