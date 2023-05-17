@@ -1,3 +1,4 @@
+import tkinter
 import tkinter as tk
 from tkcalendar import Calendar
 import datetime
@@ -16,13 +17,19 @@ def mostrar_vista_2():
 
 # Crear la ventana principal
 root = tk.Tk()
-root.title("Navegación con Tkinter")
+root.title("IRV")
 root.geometry("600x400")
 
 # Crear la vista 1
 vista_1 = tk.Frame(root)
 etiqueta_1 = tk.Label(vista_1, text="Bienvenido al Sistema de Respuesta de Voz Interactiva (IVR)")
 etiqueta_1.pack()
+
+# Imagen vista 1
+img = tkinter.PhotoImage(file="logo.png")
+img = img.subsample(2)
+lbl_img = tkinter.Label(vista_1, image=img)
+lbl_img.pack()
 
 # Crear la vista 2
 vista_2 = tk.Frame(root)
