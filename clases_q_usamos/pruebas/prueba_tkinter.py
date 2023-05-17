@@ -19,9 +19,9 @@ root = tk.Tk()
 root.title("Navegación con Tkinter")
 root.geometry("600x400")
 
-# Crear la vista 2
+# Crear la vista 1
 vista_1 = tk.Frame(root)
-etiqueta_1 = tk.Label(vista_1, text="Home")
+etiqueta_1 = tk.Label(vista_1, text="Bienvenido al Sistema de Respuesta de Voz Interactiva (IVR)")
 etiqueta_1.pack()
 
 # Crear la vista 2
@@ -35,8 +35,8 @@ label_fecha_desde.grid(row=1, column=0, padx=10, pady=5)
 
 # Calendario Desde
 calDesde = Calendar(vista_2, selectmode='day',
-                    year=2020, month=5,
-                    day=22)
+                    year=datetime.datetime.now().year, month=datetime.datetime.now().month,
+                    day=(datetime.datetime.now().day - 5))
 calDesde.grid(row=2, column=0, padx=10, pady=5)
 
 # Label para FechaHasta
