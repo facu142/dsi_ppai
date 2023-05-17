@@ -1,5 +1,6 @@
 from typing import List
 from .clases_q_usamos.Entity import Llamada, RespuestaCliente, RespuestaPosible, Cliente, CambioEstado, Estado, Pregunta, Encuesta   
+import datetime
 # from vistas import *
 
 # Llamadas???
@@ -9,16 +10,34 @@ class Controlador:
         self.periodo = periodo
         self.llamada = llamadas
             
-    
+    def getHoraActual():
+        hora_actual = datetime.datetime.now().time()
+        return hora_actual
+
     def tomaPeriodoSeleccionado(self):
         # conexion la ventana que recibiria la fecha desde y hasta
         pass
+    #no se si iria asi, o lo emprolijamos mas
+    def tieneRespuestas(llamadas):
+        llamadas_con_respuesta=[]
+        for llamada in llamadas:
+            if llamada.respuestasDeEncuesta: llamadas_con_respuesta.append(llamada)
+            #nos devuelve las llamadas que tienen respuestas
+        return llamadas_con_respuesta
     
-
-    def validarLlamadasPorPeriodo(self, fechaPeriodoHasta, fechaPeriodoDesde):
-        '''for llamada in self.llamada:
-            for respuestaCliente in llamada.respuestaDeEncuensta:
-                if respuestaCliente''' 
+    def validarLlamadasPorPeriodo(self, fechaPeriodoHasta, fechaPeriodoDesde):   
+        #fechaPeriodoDesde,fechaPeriodoHasta=tomaPeriodoSeleccionado(self)     
+        llamadas_con_respuesta = self.tieneRespuestas(self.llamada)
+        llamadas_Periodo=[]
+        for llamada in llamadas_con_respuesta:
+            #es necesario ir a buscar el primer Estado? si en teoria con el cambioEstado[0] ya sabemos q es el 1ro"
+            horaInicial=llamada.cambioEstado[0].getFechaHoraInicio()
+            #getHoraActual
+            hora_actual = self.getHoraActual()
+            duracion = hora_actual - horaInicial
+            #fechaInicio y fechaFin son los datos que se obtienen de la funcion tomaPeriodoSeleccionado()
+            if llamada.esDePeriodo(fecha_inicio,duracion, fecha_fin): llamadas_Periodo.append(llamada)
+        return llamadas_Periodo
 
 # Sistema: Muestra los datos de la llamada: cliente, estado actual, duración de la llamada,
 #y los datos de las respuestas del cliente asociados a la llamada: Respuestas seleccionadas, descripción de las

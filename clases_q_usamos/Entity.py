@@ -35,6 +35,7 @@ class Estado:
 
 class CambioEstado:
     def __init__(self, fechaHoraInicio, estado: Estado):
+        #optimo seria utilizar fecha con el datetime.datetime()
         self.fechaHoraInicio = fechaHoraInicio
         self.estado = estado
 
@@ -74,6 +75,8 @@ class Llamada:
         self.cambioEstado = cambioEstado
         self.cliente = cliente
 
+
+
     def calcularDuracion(self):
         return self.duracion
 
@@ -90,10 +93,11 @@ class Llamada:
         return None
 
     # TODO: ????
-    def esDePeriodo(self, fecha_inicio, fecha_fin):
-        for cambio_estado in self.cambioEstado:
-            fecha_inicio_cambio = cambio_estado.getFechaHoraInicio().date()
-            if fecha_inicio <= fecha_inicio_cambio <= fecha_fin:
+    "fecha inicio y fecha fin con el datetime.datetime() "
+    def esDePeriodo(self, fecha_inicio,duracion_llamada, fecha_fin):
+        '''for cambio_estado in self.cambioEstado:
+            fecha_inicio_cambio = cambio_estado.getFechaHoraInicio().date()'''
+        if fecha_inicio <= duracion_llamada <= fecha_fin:
                 return True
         return False
 
