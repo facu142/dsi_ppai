@@ -1,7 +1,6 @@
 from typing import List
 import datetime
 
-
 class RespuestaPosible:
     def __init__(self, descripcion: str, valor: str):
         self.descripcion = descripcion
@@ -79,6 +78,7 @@ class Llamada:
         return self.duracion
 
     # TODO: No me queda claro que debe hacer este metodo
+    # CREEMOS Q ESTA BIEN, NO ESTOY SEGURO DE NADA
     def determinarEstadoInicial(self):
         if len(self.cambioEstado) > 0:
             return self.cambioEstado[0].estado.getNombre()
@@ -148,7 +148,9 @@ class Encuesta:
 
     def armarEncuesta(self):
         # TODO: nose :(
-        pass
+        print("La encuesta es: ")
+        pass         
+
 
     def esVigente(self):
         fecha_actual = datetime.datetime.now().date()
