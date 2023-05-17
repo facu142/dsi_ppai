@@ -94,10 +94,10 @@ class Llamada:
 
     # TODO: ????
     "fecha inicio y fecha fin con el datetime.datetime() "
-    def esDePeriodo(self, fecha_inicio,duracion_llamada, fecha_fin):
+    def esDePeriodo(self, fecha_inicio,fecha_inicio_llamada,fecha_fin_llamada, fecha_fin):
         '''for cambio_estado in self.cambioEstado:
             fecha_inicio_cambio = cambio_estado.getFechaHoraInicio().date()'''
-        if fecha_inicio <= duracion_llamada <= fecha_fin:
+        if fecha_inicio <= fecha_inicio_llamada and  fecha_fin_llamada <= fecha_fin:
                 return True
         return False
 

@@ -31,12 +31,10 @@ class Controlador:
         llamadas_Periodo=[]
         for llamada in llamadas_con_respuesta:
             #es necesario ir a buscar el primer Estado? si en teoria con el cambioEstado[0] ya sabemos q es el 1ro"
-            horaInicial=llamada.cambioEstado[0].getFechaHoraInicio()
-            #getHoraActual
-            hora_actual = self.getHoraActual()
-            duracion = hora_actual - horaInicial
+            horaInicial=llamada.cambioEstado[0].getFechaHoraInicio()        
+            horaFinal =  horaInicial + llamada.getDuracion()
             #fechaInicio y fechaFin son los datos que se obtienen de la funcion tomaPeriodoSeleccionado()
-            if llamada.esDePeriodo(fecha_inicio,duracion, fecha_fin): llamadas_Periodo.append(llamada)
+            if llamada.esDePeriodo(fecha_inicio,horaInicial, horaFinal, fecha_fin): llamadas_Periodo.append(llamada)
         return llamadas_Periodo
 
 # Sistema: Muestra los datos de la llamada: cliente, estado actual, duración de la llamada,
