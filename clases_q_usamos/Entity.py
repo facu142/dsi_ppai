@@ -16,7 +16,7 @@ class RespuestaDeCliente:
         self.pregunta = pregunta
 
     def getDescripcionRta(self):
-        self.respuestaSeleccionada.getDescripcionRta()
+        return self.respuestaSeleccionada.getDescripcionRta() # aca agregue return
 
 
 class Estado:
@@ -76,7 +76,6 @@ class Llamada:
         self.cliente = cliente
 
 
-
     def calcularDuracion(self):
         return self.duracion
 
@@ -129,6 +128,13 @@ class Llamada:
         cambio_estado = CambioEstado(fecha_hora_actual, estado)
         self.cambioEstado.append(cambio_estado)
 
+    def obtenerDatosLlamada(self):
+        cliente = self.getNombreClienteDeLlamada() # cliente
+        estado = self.determinarUltimoEstado() # estado actual REVISAR
+        duracion = self.calcularDuracion() # duracion de la llamada
+        datos = self.getRespuestas() # respuestas seleccionadas
+        for respuesta in datos:
+            a = respuesta.getDescripcionRta() # no esta terminado, no encuentro forma de llegar a las preguntas y a la encuesta, lo unico q pense es haciendo una comparacion
 
 class Pregunta:
     def __init__(self, pregunta, respuesta: List[RespuestaPosible]):
@@ -136,7 +142,8 @@ class Pregunta:
         self.respuesta = respuesta
 
     def getDescripcion(self):
-        return self.descripcion
+        return self.descripcion # ?? no tiene atributo descripcion
+        # return self.pregunta
 
     def listarRespuestasPosibles(self):
         # TODO: Acá debería llamar a un metodo de la boundary para mostrar??

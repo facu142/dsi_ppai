@@ -1,6 +1,7 @@
 from typing import List
 from .clases_q_usamos.Entity import Llamada, RespuestaCliente, RespuestaPosible, Cliente, CambioEstado, Estado, Pregunta, Encuesta   
 import datetime
+import csv
 # from vistas import *
 
 # Llamadas???
@@ -48,15 +49,20 @@ class Controlador:
         datos_respuestas_clientes = llamada.getRespuestas() # esta va a ser una lista
         for respuestaDeCliente in datos_respuestas_clientes:
             respuesta = respuestaDeCliente.respuestaSeleccionada # mmmmm no se no se
-            descripcion_pregunta = RespuestaPosible.getDescripcionRta() # mmmmm no se no se
+            descripcion_pregunta = RespuestaPosible.getDescripcionRta() # RespuestaPosible es una clase
             # faltan las 2 descripciones
         
     
-    def tomarOpcGenerarCSV(self):
-        pass
+    def tomarOpcGenerarCSV(self, llamada):
+        contenido = self.tomarLLamadas(llamada)
+        self.generarCSV(contenido)
+        
     
-    def generarCSV(self):
-        pass
+    # Esto lo hizo chat gpt hay q revisar
+    def generarCSV(self, contenido): # El contenido 
+        with open('datos.csv', mode='w', newline='') as archivo:
+            writer = csv.writer(archivo)
+            writer.writerows(contenido)
     
     def finalizarCU(self):
         pass
