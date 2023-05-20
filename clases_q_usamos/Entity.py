@@ -6,7 +6,7 @@ class RespuestaPosible:
         self.descripcion = descripcion
         self.valor = valor
 
-    def getDescripcionRta(self):
+    def getDescripcionRta(self): #Esto deberia tener un getDescripcion() a Pregunta?
         return self.descripcion
 
 
@@ -15,9 +15,10 @@ class RespuestaDeCliente:
         self.respuestaSeleccionada = respuesta
         self.pregunta = pregunta
 
-    def getDescripcionRta(self):
-        return self.respuestaSeleccionada.getDescripcionRta() # aca agregue return
-
+    # def getDescripcionRta
+    def getRespuesta(self):
+        return self.respuestaSeleccionada.getDescripcionRta() #.getDescripcionRta() # FIJARSE ACA
+        #return self.respuestaSeleccionada.getDescripcionRta()
 
 class Estado:
     def __init__(self, nombre):
@@ -132,9 +133,10 @@ class Llamada:
         cliente = self.getNombreClienteDeLlamada() # cliente
         estado = self.determinarUltimoEstado() # estado actual REVISAR
         duracion = self.calcularDuracion() # duracion de la llamada
-        datos = self.getRespuestas() # respuestas seleccionadas
-        for respuesta in datos:
-            a = respuesta.getDescripcionRta() # no esta terminado, no encuentro forma de llegar a las preguntas y a la encuesta, lo unico q pense es haciendo una comparacion
+        respuestas = self.getRespuestas() # respuestas seleccionadas
+        for respuesta in respuestas:
+            return respuesta.getRespuesta() # no esta terminado, no encuentro forma de llegar a las preguntas y a la encuesta, lo unico q pense es haciendo una comparacion
+            #respuesta.getRespuesta() # hasta aca ok
 
 class Pregunta:
     def __init__(self, pregunta, respuesta: List[RespuestaPosible]):
@@ -142,8 +144,8 @@ class Pregunta:
         self.respuesta = respuesta
 
     def getDescripcion(self):
-        return self.descripcion # ?? no tiene atributo descripcion
-        # return self.pregunta
+        # return self.descripcion # ?? no tiene atributo descripcion
+        return self.pregunta
 
     def listarRespuestasPosibles(self):
         # TODO: Acá debería llamar a un metodo de la boundary para mostrar??

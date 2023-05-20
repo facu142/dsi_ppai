@@ -43,13 +43,14 @@ class Controlador:
 #preguntas y descripción de la encuesta que incluye las preguntas.
 #Permite generar un csv o imprimir el resultado de la encuesta asociada a la llamada seleccionada.
     def tomarLLamadas(self, llamada):
-        nombre_cliente = llamada.getNombreClienteDeLlamada()
-        estado = llamada.determinarUltimoEstado()
-        duracion = llamada.calcularDuracion()
-        datos_respuestas_clientes = llamada.getRespuestas() # esta va a ser una lista
-        for respuestaDeCliente in datos_respuestas_clientes:
-            respuesta = respuestaDeCliente.respuestaSeleccionada # mmmmm no se no se
-            descripcion_pregunta = RespuestaPosible.getDescripcionRta() # RespuestaPosible es una clase
+        return llamada.obtenerDatos()
+        #nombre_cliente = llamada.getNombreClienteDeLlamada()
+        #estado = llamada.determinarUltimoEstado()
+        #duracion = llamada.calcularDuracion()
+        #datos_respuestas_clientes = llamada.getRespuestas() # esta va a ser una lista
+        #for respuestaDeCliente in datos_respuestas_clientes:
+        #    respuesta = respuestaDeCliente.respuestaSeleccionada # mmmmm no se no se
+        #    descripcion_pregunta = RespuestaPosible.getDescripcionRta() # RespuestaPosible es una clase
             # faltan las 2 descripciones
         
     
