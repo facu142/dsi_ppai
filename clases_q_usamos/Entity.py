@@ -107,7 +107,7 @@ class Llamada:
     def getNombreClienteDeLlamada(self):
         return self.cliente.getNombre()
 
-    def getRespuestas(self):
+    def getRespuestasDeEncuesta(self):
         return self.respuestasDeEncuesta
 
     # TODO: ver este metodo "new()"
@@ -133,15 +133,17 @@ class Llamada:
         cliente = self.getNombreClienteDeLlamada() # cliente
         estado = self.determinarUltimoEstado() # estado actual REVISAR
         duracion = self.calcularDuracion() # duracion de la llamada
-        respuestas = self.getRespuestas() # respuestas seleccionadas
-        for respuesta in respuestas:
-            return respuesta.getRespuesta() # no esta terminado, no encuentro forma de llegar a las preguntas y a la encuesta, lo unico q pense es haciendo una comparacion
-            #respuesta.getRespuesta() # hasta aca ok
+        respuestas = self.RespuestasDeEncuesta() # respuestas en una lista.
+
+    
+
+
+
 
 class Pregunta:
     def __init__(self, pregunta, respuesta: List[RespuestaPosible]):
         self.pregunta = pregunta
-        self.respuesta = respuesta
+        self.respuestasPosibles = respuesta
 
     def getDescripcion(self):
         # return self.descripcion # ?? no tiene atributo descripcion
@@ -154,15 +156,30 @@ class Pregunta:
 
 
 class Encuesta:
-    def __init__(self, descripcion, fechaFinVigencia, pregunta: List[Pregunta]):
+    def __init__(self, cliente: Cliente, descripcion, fechaFinVigencia, preguntas: List[Pregunta]):
+        self.cliente = cliente
         self.descripcion = descripcion
         self.fechaFinVigencia = fechaFinVigencia,
-        self.pregunta = pregunta
+        self.preguntas = preguntas
 
     def armarEncuesta(self):
         # TODO: nose :(
         print("La encuesta es: ")
-        pass         
+        pass 
+
+def encuestasCliente(llamadaSeleccionada):
+        encuestasDelCliente = []
+        for encuesta in Encuesta: 
+            if encuesta.cliente == llamadaSeleccionada.cliente :  encuestasDelCliente.append(encuesta)
+        return encuestasDelCliente
+
+def esEncuestaLlamada(llamadaSeleccionada):
+    encuestadelcliente= encuestasCliente(llamadaSeleccionada)
+    for encuesta in encuestadelcliente:
+        for nro in range(len(encuesta.preguntas)):
+            if not(llamadaSeleccionada.respuestasDeEncuesta[nro] in encuesta.preguntas[nro].respuestasPosibles):
+                break
+            else: return encuesta
 
 
     def esVigente(self):
