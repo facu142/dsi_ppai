@@ -4,7 +4,7 @@ class Estado:
         self.nombre = nombre
         self.estados.append(self)
 
-estado1 = Estado('Finalizada')
+estado1 = Estado('Iniciada')
 estado2 = Estado('EnCurso')
 estado3 = Estado('Cancelado')
 estado5 = Estado('PendienteDeEscucha')

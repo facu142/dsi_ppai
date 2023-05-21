@@ -1,5 +1,6 @@
 from Entity import *
 
+# A ESTE ARCHIVO YA SE LO PUEDE ELIMINAR CREO
 
 cliente1 = Cliente("44203020", "Juan Mateo Blencio", "3547623905")
 cliente2 = Cliente("12345678", "Juan Pérez", "123456789")
