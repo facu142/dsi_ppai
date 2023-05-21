@@ -12,10 +12,12 @@ class Pregunta:
         self.respuesta = respuesta
 
 class Encuesta: # Esta clase ni siquiera la usamos???
+    encuestas=[]
     def __init__(self, descripcion, fechaFinVigencia, pregunta: List[Pregunta]):
         self.descripcion = descripcion
         self.fechaFinVigencia = fechaFinVigencia,
         self.pregunta = pregunta
+        self.encuestas.append(self)
 
 
 encuesta1 = Encuesta('descripcion1', '20/12/2024', [pregunta1,pregunta2])
@@ -27,16 +29,19 @@ encuesta6 = Encuesta('descripcion6', '03/03/2025', [pregunta1,pregunta4])
 encuesta7 = Encuesta('descripcion7', '08/01/2024', [pregunta3,pregunta6])
 encuesta8 = Encuesta('descripcion8', '21/06/2025', [pregunta5,pregunta8])
 encuesta9 = Encuesta('descripcion9', '27/05/2024', [pregunta7,pregunta10])
-encuesta10 = Encuesta('descripcion10', '30/06/2025', [pregunta9,pregunta4])
+encuesta10 = Encuesta('descripcion10', '30/06/2025', [pregunta9,pregunta4,pregunta10])
 
-
-encuestas = [encuesta1, encuesta2, encuesta3, encuesta4, encuesta5, encuesta6, encuesta7, encuesta8, encuesta9, encuesta10]
 
 def creador(coleccion):
     return coleccion
 
 def main():
-    pass
+    for encuesta in Encuesta.encuestas:
+        print("Encuesta")
+        for i in range(len(encuesta.pregunta)):
+            print("Pregunta Nro",i+1)
+            print(encuesta.pregunta[i].pregunta)
+        print("\n")
 
 if __name__ == '__main__':
     main()

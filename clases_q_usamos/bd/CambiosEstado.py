@@ -2,9 +2,6 @@ from datetime import datetime, date
 import random
 from Estados import *
 
-class Estado:
-    def __init__(self, nombre):
-        self.nombre = nombre
 
 class CambioEstado:
     def __init__(self, fechaHoraInicio, estado: Estado):
