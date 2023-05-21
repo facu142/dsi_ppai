@@ -2,7 +2,7 @@ class Estado:
     def __init__(self, nombre):
         self.nombre = nombre
 
-estado1 = Estado('Finalizada')
+estado1 = Estado('Iniciada')
 estado2 = Estado('EnCurso')
 estado3 = Estado('Cancelado')
 estado4 = Estado('Finalizada')
