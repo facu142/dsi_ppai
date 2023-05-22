@@ -1,0 +1,18 @@
+
+from Entity import *
+from Llamadas import *
+from Encuestas import *
+
+
+def main():
+    Llamadas=Llamada.ArrLlamadas
+    encuesta_select=esEncuestaLlamada(Llamadas[3]) #cliente 5 #devuelve descripcion4
+    print(encuesta_select.descripcion)
+    print(encuesta_select.cliente.nombreCompleto)
+    for nro in range(len(encuesta_select.preguntas)):
+        print("Pregunta ",nro+1)
+        print(encuesta_select.preguntas[nro].pregunta)
+        print(Llamadas[3].respuestasDeEncuesta[nro].respuestaSeleccionada.valor)
+
+if __name__ == '__main__':
+    main()

@@ -17,7 +17,7 @@ respuestaC1 = RespuestaDeCliente(date(2012, 5, 9), respuestaP10)
 respuestaC2 = RespuestaDeCliente(date(2012, 5, 9), respuestaPB)
 
 # Respuestas de llamada 5
-respuestaC5 = RespuestaDeCliente(date(2013, 7, 18), respuestaPB)
+respuestaC5 = RespuestaDeCliente(date(2013, 7, 18), respuestaP1)
 respuestaC6 = RespuestaDeCliente(date(2013, 7, 18), respuestaPB)
 
 '''

@@ -5,7 +5,7 @@ class RespuestaPosible:
     def __init__(self, descripcion: str, valor: str):
         self.descripcion = descripcion
         self.valor = valor
-
+    
     def getDescripcionRta(self): #Esto deberia tener un getDescripcion() a Pregunta?
         return self.descripcion
 
@@ -141,10 +141,11 @@ class Llamada:
 
 
 class Pregunta:
+    preguntas=[]
     def __init__(self, pregunta, respuesta: List[RespuestaPosible]):
         self.pregunta = pregunta
         self.respuestasPosibles = respuesta
-
+        self.preguntas.append(self)
     def getDescripcion(self):
         # return self.descripcion # ?? no tiene atributo descripcion
         return self.pregunta
@@ -156,12 +157,15 @@ class Pregunta:
 
 
 class Encuesta:
+    ArrEncuestas=[]
+
     def __init__(self, cliente: Cliente, descripcion, fechaFinVigencia, preguntas: List[Pregunta]):
         self.cliente = cliente
         self.descripcion = descripcion
         self.fechaFinVigencia = fechaFinVigencia,
         self.preguntas = preguntas
-
+        self.ArrEncuestas.append(self)
+        
     def armarEncuesta(self):
         # TODO: nose :(
         print("La encuesta es: ")
@@ -169,7 +173,7 @@ class Encuesta:
 
 def encuestasCliente(llamadaSeleccionada):
         encuestasDelCliente = []
-        for encuesta in Encuesta: 
+        for encuesta in Encuesta.ArrEncuestas: 
             if encuesta.cliente == llamadaSeleccionada.cliente :  encuestasDelCliente.append(encuesta)
         return encuestasDelCliente
 
@@ -177,10 +181,12 @@ def esEncuestaLlamada(llamadaSeleccionada):
     encuestadelcliente= encuestasCliente(llamadaSeleccionada)
     for encuesta in encuestadelcliente:
         for nro in range(len(encuesta.preguntas)):
-            if not(llamadaSeleccionada.respuestasDeEncuesta[nro] in encuesta.preguntas[nro].respuestasPosibles):
-                break
-            else: return encuesta
-
+                respuestaPosibles=[]
+                for j in range(len(encuesta.preguntas[nro].respuestasPosibles)):
+                    respuestaPosibles.append(encuesta.preguntas[nro].respuestasPosibles[j].valor)
+                if not(llamadaSeleccionada.respuestasDeEncuesta[nro].respuestaSeleccionada.valor in respuestaPosibles ):
+                    break
+                else: return encuesta
 
     def esVigente(self):
         fecha_actual = datetime.datetime.now().date()
